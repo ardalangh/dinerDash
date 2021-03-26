@@ -24,7 +24,7 @@ running = True
 
 clock = pygame.time.Clock()
 
-bg = pygame.image.load("./assets/bg.jpeg").convert()
+# bg = pygame.image.load("./assets/bg.jpeg").convert()
 
 
 
@@ -34,8 +34,10 @@ while running:
             running = False
 
 
-    screen.blit(bg, [0,0])
+    # screen.blit(bg, [0,0])
     
+    screen.fill((254,235,202,255))
+
     tb1 = Table(2, 0)
     tb2 = Table(2, 1)
     tb3 = Table(2, 2)
