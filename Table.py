@@ -17,8 +17,21 @@ class Table:
         self.empty = True # Table is empty (bool)
         self.guest_at = 0 # How many people are at this table (int)
         self.num = None   # The number of the table (int)
+        self.chairs = []  # list of all the chairs around the instance of the table class
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     def draw(self, screen):
-        table = pygame.image.load(Table.file_path).convert() 
+        table = pygame.image.load(Table.file_path).convert()
         screen.blit(table, Table.possible_pos[self.id])
