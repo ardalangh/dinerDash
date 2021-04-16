@@ -11,6 +11,11 @@ class Table:
                     (400, 700)]
     file_path = "./assets/table.PNG"
 
+
+
+
+
+
     def __init__(self, cap, idNum):
         self.id = idNum
         if cap not in Table.possible_caps:
@@ -21,6 +26,12 @@ class Table:
         self.guest_at = 0   # How many people are at this table (int)
         self.num = None     # The number of the table (int)
         self.chairs = [Chair(self, -1), Chair(self, 1)]    # list of all the chairs around the instance of the table class
+
+
+    def getPossiblePos(self):
+        return Table.possible_pos
+
+
 
     def draw(self, screen):
         for chair in self.chairs:
