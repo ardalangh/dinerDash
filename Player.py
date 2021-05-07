@@ -9,18 +9,15 @@ class Player:
         self.movingTo = (None, None)
         self.dir = "RIGHT"
         self.img_counter = 0
-
-
+        self.player_loaded = pygame.image.load(self.get_file_path()).convert_alpha()
+        self.player_rect = self.player_loaded.get_rect()
 
 
     def get_file_path(self):
         return f"./assets/girlWalk{self.dir}{self.img_counter}.png"
 
     def draw(self, screen):
-        print(self.get_file_path())
-        player = pygame.image.load(self.get_file_path()).convert_alpha()
-        # player = pygame.transform.scale(player, (90, 120))
-        screen.blit(player, [self.x, self.y])
+        screen.blit(self.player_loaded, [self.x, self.y])
 
 
     def moveLeft(self):
