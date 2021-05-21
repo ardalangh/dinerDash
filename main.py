@@ -28,7 +28,7 @@ clock = pygame.time.Clock()
 
 # bg = pygame.image.load("./assets/bg.jpeg").convert()
 
-player = Player()
+player = Player(testing=False)
 
 
 tb1 = Table(2, 0)

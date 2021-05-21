@@ -36,25 +36,37 @@ class Player:
 
     def update(self, obstacles):
         if self.moving:
-            if (self.movingTo[0] < self.x and all(
-                    [obstacle.collidepoint(self.player_rect.midleft) for obstacle in obstacles])):
-                self.dir = "LEFT"
-                self.x -= 5
-                self.player_rect = self.player_rect.move(-5, 0)
+            move_to = self.move_helper(self.movingTo, 5)
+            self.player_rect = self.player_rect.move(move_to[0], move_to[1])
+            self.x, self.y = self.player_rect.x, self.player_rect.y
 
-            if (self.movingTo[0] > self.x and all(
-                    [obstacle.collidepoint(self.player_rect.midright) for obstacle in obstacles])):
-                self.dir = "RIGHT"
-                self.x += 5
-                self.player_rect = self.player_rect.move(5, 0)
-            if (self.movingTo[1] < self.y and all(
-                    [obstacle.collidepoint(self.player_rect.midtop) for obstacle in obstacles])):
-                self.y -= 5
-                self.player_rect = self.player_rect.move(0, -5)
-            if (self.movingTo[1] > self.y and all(
-                    [obstacle.collidepoint(self.player_rect.midbottom) for obstacle in obstacles])):
-                self.y += 5
-                self.player_rect = self.player_rect.move(0, 5)
+
+
+
+
+
+
+
+
+            # if (self.movingTo[0] < self.x and all(
+            #         [obstacle.collidepoint(self.player_rect.midleft) for obstacle in obstacles])):
+            #     self.dir = "LEFT"
+            #     self.x -= 5
+            #     self.player_rect = self.player_rect.move(-5, 0)
+            #
+            # if (self.movingTo[0] > self.x and all(
+            #         [obstacle.collidepoint(self.player_rect.midright) for obstacle in obstacles])):
+            #     self.dir = "RIGHT"
+            #     self.x += 5
+            #     self.player_rect = self.player_rect.move(5, 0)
+            # if (self.movingTo[1] < self.y and all(
+            #         [obstacle.collidepoint(self.player_rect.midtop) for obstacle in obstacles])):
+            #     self.y -= 5
+            #     self.player_rect = self.player_rect.move(0, -5)
+            # if (self.movingTo[1] > self.y and all(
+            #         [obstacle.collidepoint(self.player_rect.midbottom) for obstacle in obstacles])):
+            #     self.y += 5
+            #     self.player_rect = self.player_rect.move(0, 5)
 
             # self.img_counter = (self.img_counter + 1) % 4
             if abs(self.movingTo[1] - self.y) < 5 and abs(self.movingTo[0] - self.x) < 5:
