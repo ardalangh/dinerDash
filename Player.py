@@ -61,6 +61,31 @@ class Player:
 
 
 
+    def move_helper(self, dest, vel):
+        """
+            :param dest: destination coordinate where the player should move to
+            :param vel: velocity of the movement
+            :returns a tuple indicating the change in coordinate in the next cycle
+
+            checking X first then Y
+        """
+        res = ()
+        # check if x is not at dest
+        if (self.x != dest[0]) :
+            if self.x < dest[0]:
+                res[0] = vel * 1
+            else:
+                res[0] = vel * -1
+        # check if y is not at dest
+        if (self.y != dest[1]) :
+            if self.y < dest[1]:
+                res[1] = vel * 1
+            else:
+                res[1] = vel * -1
+        return res
+
+
+
 
 
 
