@@ -4,9 +4,9 @@ import Table
 
 class Chair:
     def __init__(self, table, facing):
-        self.table = table        # table instance that this chair is around
-        self.facing = facing      # facing = -1  means Right facing = 1 means left
-        self.taken = False        # no one sitting on the table
+        self.table = table  # table instance that this chair is around
+        self.facing = facing  # facing = -1  means Right facing = 1 means left
+        self.taken = False  # no one sitting on the table
 
         self.y = table.getPossiblePos()[table.id][1]
 
@@ -26,10 +26,6 @@ class Chair:
         self.chair_rect = self.chair_loaded.get_rect()
         self.chair_rect.x, self.chair_rect.y = self.x, self.y
         self.debug = True
-
-
-
-
 
     def draw(self, screen):
         if self.debug:
