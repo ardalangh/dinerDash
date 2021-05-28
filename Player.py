@@ -37,30 +37,27 @@ class Player:
         screen.blit(self.player_loaded, [self.x, self.y])
 
     def update(self, obstacles):
+        # DUBUG NEEDED
         if self.moving:
             move_to = self.move_helper(self.movingTo, 5)
-            self.player_rect = self.player_rect.move(move_to[0], move_to[1])
-            self.x, self.y = self.player_rect.x, self.player_rect.y
-            if abs(self.movingTo[1] - self.y) <= 0 and abs(self.movingTo[0] - self.x) <= 0:
-                self.moving = False;
+            tmp_rect = self.player_rect.move(move_to[0], move_to[1])
+
             self.touching_obj = False
             for obs in obstacles:
-                if obs.colliderect(self.player_rect):
+                if obs.colliderect(tmp_rect):
                     self.touching_obj = True
+
             if self.touching_obj:
+                return
+                self.moving = False
                 self.color_debug = (255, 0, 0)
             else:
                 self.color_debug = (0, 0, 0)
 
-
-
-
-
-
-
-
-
-
+            self.player_rect = tmp_rect
+            self.x, self.y = self.player_rect.x, self.player_rect.y
+            if abs(self.movingTo[1] - self.y) <= 0 and abs(self.movingTo[0] - self.x) <= 0:
+                self.moving = False;
 
 
 
@@ -76,7 +73,7 @@ class Player:
 
             checking X first then Y
         """
-        res = [0,0]
+        res = [0, 0]
         # check if x is not at dest
         if self.x != dest[0]:
             if self.x < dest[0]:

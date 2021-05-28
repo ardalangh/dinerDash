@@ -33,7 +33,11 @@ player = Player(testing=False)
 tables = [Table(2, 0), Table(2, 1), Table(2, 2), Table(2, 3)]
 
 
-obstacles = [t.table_rect for t in tables]
+obstacles = []
+for t in tables:
+    obstacles.append(t.table_rect)
+    for c in t.chairs:
+        obstacles.append(c.chair_rect)
 
 while running:
     for event in pygame.event.get():
