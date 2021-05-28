@@ -30,13 +30,10 @@ clock = pygame.time.Clock()
 
 player = Player(testing=False)
 
+tables = [Table(2, 0), Table(2, 1), Table(2, 2), Table(2, 3)]
 
-tb1 = Table(2, 0)
-tb2 = Table(2, 1)
-tb3 = Table(2, 2)
-tb4 = Table(2, 3)
 
-obstacles = [tb1.table_rect, tb2.table_rect, tb3.table_rect, tb4.table_rect]
+obstacles = [t for t in tables]
 
 while running:
     for event in pygame.event.get():
@@ -57,10 +54,7 @@ while running:
 
 
 
-    tb1.draw(screen)
-    tb2.draw(screen)
-    tb3.draw(screen)
-    tb4.draw(screen)
+    [t.draw(screen) for t in tables]
 
 
 

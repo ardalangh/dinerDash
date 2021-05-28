@@ -24,7 +24,14 @@ class Chair:
 
         self.chair_loaded = pygame.image.load(self.filePath).convert_alpha()
         self.chair_rect = self.chair_loaded.get_rect()
+        self.chair_rect.x, self.chair_rect.y = self.x, self.y
+        self.debug = True
+
+
+
+
 
     def draw(self, screen):
-
+        if self.debug:
+            pygame.draw.rect(screen, (0, 0, 0), self.chair_rect, 3)
         screen.blit(self.chair_loaded, [self.x, self.y])

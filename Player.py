@@ -13,6 +13,8 @@ class Player:
         self.player_loaded = pygame.image.load(self.get_file_path()).convert_alpha()
         self.player_rect = self.player_loaded.get_rect()
         self.debug = True
+        self.color_debug = (0, 0, 0)
+        self.touching_obj = False
 
     def get_file_path(self):
         if self.testing:
@@ -31,46 +33,25 @@ class Player:
 
     def draw(self, screen):
         if self.debug:
-            pygame.draw.rect(screen, (0, 0, 0), self.player_rect, 1)
+            pygame.draw.rect(screen, self.color_debug, self.player_rect, 3)
         screen.blit(self.player_loaded, [self.x, self.y])
 
     def update(self, obstacles):
         if self.moving:
-            move_to = self.move_helper(self.movingTo, 3)
+            move_to = self.move_helper(self.movingTo, 5)
             self.player_rect = self.player_rect.move(move_to[0], move_to[1])
             self.x, self.y = self.player_rect.x, self.player_rect.y
-
-
-
-
-
-
-
-
-
-            # if (self.movingTo[0] < self.x and all(
-            #         [obstacle.collidepoint(self.player_rect.midleft) for obstacle in obstacles])):
-            #     self.dir = "LEFT"
-            #     self.x -= 5
-            #     self.player_rect = self.player_rect.move(-5, 0)
-            #
-            # if (self.movingTo[0] > self.x and all(
-            #         [obstacle.collidepoint(self.player_rect.midright) for obstacle in obstacles])):
-            #     self.dir = "RIGHT"
-            #     self.x += 5
-            #     self.player_rect = self.player_rect.move(5, 0)
-            # if (self.movingTo[1] < self.y and all(
-            #         [obstacle.collidepoint(self.player_rect.midtop) for obstacle in obstacles])):
-            #     self.y -= 5
-            #     self.player_rect = self.player_rect.move(0, -5)
-            # if (self.movingTo[1] > self.y and all(
-            #         [obstacle.collidepoint(self.player_rect.midbottom) for obstacle in obstacles])):
-            #     self.y += 5
-            #     self.player_rect = self.player_rect.move(0, 5)
-
-            # self.img_counter = (self.img_counter + 1) % 4
-            if abs(self.movingTo[1] - self.y) < 5 and abs(self.movingTo[0] - self.x) < 5:
+            if abs(self.movingTo[1] - self.y) <= 0 and abs(self.movingTo[0] - self.x) <= 0:
                 self.moving = False;
+            self.touching_obj = False
+            for obs in obstacles:
+                if obs.colliderect(self.player_rect):
+                    self.touching_obj = True
+            if self.touching_obj:
+                self.color_debug = (255, 0, 0)
+            else:
+                self.color_debug = (0, 0, 0)
+
 
 
 
