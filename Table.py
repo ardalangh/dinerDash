@@ -49,7 +49,7 @@ class Table:
         # pygame.draw.circle(screen, (0,0,0), Table.possible_pos[self.id], 10 )
 
     def initChairs(self):
-        self.chairs.appemnd(Chair(self.determineLeftChairPos()[0],
+        self.chairs.append(Chair(self.determineLeftChairPos()[0],
                                   self.determineLeftChairPos()[1],
                                   self,
                                   0))
