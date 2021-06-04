@@ -11,10 +11,7 @@ pygame.init()
 
 
 
-
-size = (1520, 980)
-
-screen = pygame.display.set_mode(size)
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("Dinar Dash")
 
 
