@@ -1,5 +1,6 @@
 import pygame
 
+from Food import Food
 from Player import Player
 from Table import Table
 
@@ -29,6 +30,9 @@ tables = [Table(2, 0), Table(2, 1), Table(2, 2), Table(2, 3)]
 
 
 kitchen = pygame.image.load("assets/kitchen.png").convert_alpha()
+
+food = Food("plate_NE")
+
 
 
 
@@ -66,12 +70,14 @@ while running:
     # screen.blit(bg, [0,0])
 
     screen.fill((254,235,202,255))
-    screen.blit(kitchen, (0, size[1]//4))
+    [t.draw(screen) for t in tables]
+    food.draw_on_table(screen, tables[0])
+    # screen.blit(kitchen, (0, size[1]//4))
     player.draw(screen)
 
 
 
-    [t.draw(screen) for t in tables]
+
 
 
 
