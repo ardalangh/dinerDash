@@ -4,13 +4,17 @@ from Chair import Chair
 
 
 class Table:
+
+
+
+
     possible_caps = [2, 4, 6, 8]
     ratio_map = [(0.4, 0.4),
                     (0.8, 0.4),
                     (0.8, 0.7),
                     (0.4, 0.7)]
     file_path = "./assets/table.png"
-
+    SIZE = (100, 100)
     def __init__(self, cap, idNum):
 
 
@@ -25,6 +29,8 @@ class Table:
         self.num = None       # The number of the table (int)
         # self.chairs = [Chair(self, -1), Chair(self, 1)]  # list of all the chairs around the instance of the table class
         self.table_loaded = pygame.image.load(Table.file_path).convert_alpha()
+        self.table_loaded = pygame.transform.scale(self.table_loaded, Table.SIZE)
+
         self.table_rect = self.table_loaded.get_rect()
 
         self.debug = True

@@ -12,5 +12,8 @@ class Food:
         self.img_loaded = pygame.transform.scale(self.img_loaded, (50, 50))
 
 
-    def draw_on_table(self, screen, table):
-        screen.blit(self.img_loaded, [table.table_rect.x, table.table_rect.y])
+    def draw_on_table(self, screen, table, pos):
+        if (pos == "left"):
+            screen.blit(self.img_loaded, [table.table_rect.x, table.table_rect.y])
+        elif (pos == "right"):
+            screen.blit(self.img_loaded, [table.table_rect.x + 50, table.table_rect.y])

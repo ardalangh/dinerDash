@@ -71,7 +71,7 @@ while running:
 
     screen.fill((254,235,202,255))
     [t.draw(screen) for t in tables]
-    food.draw_on_table(screen, tables[0])
+    food.draw_on_table(screen, tables[0], "right")
     # screen.blit(kitchen, (0, size[1]//4))
     player.draw(screen)
 
