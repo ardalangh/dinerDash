@@ -9,7 +9,7 @@ class Food:
         self.img_path = Food.path_to_assets + self.name + ".png"
         self.img_loaded = pygame.image.load(self.img_path)
         assert self.img_loaded is not None
-        self.img_loaded = pygame.transform.scale(self.img_loaded, (50, 50))
+        # self.img_loaded = pygame.transform.scale(self.img_loaded, (50, 50))
 
 
     def draw_on_table(self, screen, table, pos):
@@ -19,3 +19,8 @@ class Food:
             screen.blit(self.img_loaded, [table.table_rect.x + 50, table.table_rect.y])
 
     # def draw_on_kitchen_table(self, )
+
+
+
+    def draw(self, screen, pos):
+        screen.blit(self.img_loaded, pos)

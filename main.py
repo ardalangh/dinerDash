@@ -34,7 +34,8 @@ kitchen_pos = (0, size[1]//4)
 
 
 
-food = Food("plate_NE")
+plate = Food("plate_NE")
+burger = Food("burger_NE")
 
 
 
@@ -63,22 +64,24 @@ while running:
             if event.key == pygame.K_ESCAPE:
                 running = False
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_pos = pygame.mouse.get_pos()
-            player.moveTo(mouse_pos)
+        # if event.type == pygame.MOUSEBUTTONDOWN:
+        #     mouse_pos = pygame.mouse.get_pos()
+        #     player.moveTo(mouse_pos)
 
 
 
-    player.update(obstacles)
+    # player.update(obstacles)
     # screen.blit(bg, [0,0])
 
     screen.fill((254,235,202,255))
-    [t.draw(screen) for t in tables]
-    food.draw_on_table(screen, tables[0], "right")
-    screen.blit(kitchen, kitchen_pos)
-    player.draw(screen)
 
+    # [t.draw(screen) for t in tables]
+    # food.draw_on_table(screen, tables[0], "right")
+    # screen.blit(kitchen, kitchen_pos)
+    # player.draw(screen)
 
+    plate.draw(screen, (50, 50))
+    burger.draw(screen, (50, 50))
 
 
 
